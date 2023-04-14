@@ -9,22 +9,22 @@ import Foundation
 
 public struct CDMessage {
     /// The key referencing your message in Chat Defender
-    let key:String
-    
+    let key: String
+
     /// The variables for substitution into your message
-    let variables: [String:String]?
-    
+    let variables: [String: String]?
+
     /// Creates a new CDMessage with a given key and variables
     /// - Parameters:
     ///   - key: key for message in ChatDefender
     ///   - variables: optional variables for substitution
-    public init(key: String, variables: [String : String]? = nil) {
+    public init(key: String, variables: [String: String]? = nil) {
         self.key = key
         self.variables = variables
     }
-    
-    var jsonObject:[String:Any] {
-        var dict = [String:Any]()
+
+    var jsonObject: [String: Any] {
+        var dict = [String: Any]()
         dict["key"] = key
         if let variables {
             dict["variables"] = variables
@@ -33,9 +33,9 @@ public struct CDMessage {
     }
 }
 
-extension CDMessage:Equatable {
-    
+extension CDMessage: Equatable {
+
 }
-extension CDMessage:Hashable {
-    
+extension CDMessage: Hashable {
+
 }
