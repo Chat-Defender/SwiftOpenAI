@@ -2,7 +2,7 @@ import Foundation
 
 struct ChatCompletionsEndpoint: Endpoint {
     private let model: OpenAIModelType
-    private var messages: [[String: String]] = []
+    private var messages: [[String: Any]] = []
 
     private let optionalParameters: ChatCompletionsOptionalParameters?
 
@@ -31,9 +31,9 @@ struct ChatCompletionsEndpoint: Endpoint {
          "max_tokens": self.optionalParameters?.maxTokens as Any]
     }
 
-    private static func mapMessageModelToDictionary(messages: [MessageChatGPT]) -> [[String: String]] {
+    private static func mapMessageModelToDictionary(messages: [MessageChatGPT]) -> [[String: Any]] {
         return messages.map {
-            ["role": $0.role.rawValue, "content": $0.text]
+            ["role": $0.role.rawValue, "cd_content": $0.cdContent.jsonObject]
         }
     }
 }
